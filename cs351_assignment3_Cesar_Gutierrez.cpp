@@ -12,10 +12,9 @@ HANDLE handleThreadA;
 HANDLE handleThreadB;
 DWORD threadA;
 DWORD threadB;
+ofstream file("synch.txt");
 
 void print26times(char A, int X){
-
-    ofstream file("synch.txt");
 
     WaitForSingleObject(myMutex, INFINITE);
 
@@ -47,8 +46,6 @@ void print26times(char A, int X){
     }
 
     ReleaseMutex(myMutex);
-
-    file.close();
 }
 
 DWORD WINAPI ThreadA(){
@@ -66,9 +63,6 @@ DWORD WINAPI ThreadB(){
 }
 
 int main(){
-
-    ofstream file("synch.txt");
-    file.close();
 
     myMutex = CreateMutex(
         NULL,   // no security attributes
@@ -100,5 +94,7 @@ int main(){
     CloseHandle(handleThreadA);
     CloseHandle(handleThreadB);
 
+
+    file.close();
     return 0;
 }
