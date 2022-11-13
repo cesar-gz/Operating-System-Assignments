@@ -2,19 +2,24 @@
 #include <thread>
 #include <string>
 #include <iostream>
-
 #include <WinSock2.h> 
 #include <Ws2tcpip.h>
 
-#pragma comment(lib, "ws2_32.lib")
 // include flag -lws2_32 if compiling with MinGW 
 // otherwise you'll get a bunch of undefined reference compiler errors
 // pragma didn't work with my MinGW
+#pragma comment(lib, "ws2_32.lib")
 
 using namespace std;
 
-// Chat Application that transmits messages using a UDP/IP socket
-// Cesar Gutierrez
+/* 
+cesar gutierrez
+CPSC 351 Operating System Concepts
+Sunday Nov 13, 2022
+cesarg7@csu.fullerton.edu
+
+Chat Application that transmits messages using a UDP/IP socket
+*/
 
 mutex Mutex;
 
